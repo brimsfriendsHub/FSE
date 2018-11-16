@@ -1,0 +1,82 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="viewtaskForm" (ngSubmit)="onSubmit()">
+            <div class="row  form-group">
+                <div class="col-md-6">
+                    <div class="row  form-group">
+                        <div class="col-md-4">
+                            Task:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" formControlName="taskName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-inline p-2">Priority From</div>
+                            <div class="d-inline p-2"><input type="text" formControlName="priorityFrom" class="form-control" /></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-inline p-2">Priority To</div>
+                            <div class="d-inline p-2"><input type="text" formControlName="priorityTo" class="form-control" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row  form-group">
+                        <div class="col-md-4">
+                            Parent Task:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" formControlName="parenttaskName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-inline p-2">Start Date</div>
+                            <div class="d-inline p-2"><input type="date" class="form-control" formControlName="startDate" placeholder="yyyy-MM-dd" name="startdp"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-inline p-2">End Date</div>
+                            <div class="d-inline p-2"><input class="form-control" type="date" formControlName="endDate" placeholder="yyyy-MM-dd" name="enddp"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12 text-right">
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-body">
+        <div *ngFor="let task of taskDetails; trackBy:trackTask">
+            <table class="table">
+                <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Parent</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">StartDate</th>
+                    <th scope="col">EndDate</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td class="clsTaskDetail ">
+                        <div class="taskHighLight">{{task.taskName}}</div>
+                    </td>
+                    <td class="clsTaskDetail">
+                        <div class="taskHighLight">{{task.parentTaskName}}</div>
+                    </td>
+                    <td class="clsFixedtbllength">{{task.priority}}</td>
+                    <td class="clsFixedtbllength">{{task.startDate | date:'dd/MM/yyyy'}}</td>
+                    <td class="clsFixedtbllength">{{task.endDate | date:'dd/MM/yyyy'}}</td>
+                    <td class="clsEditDetail">
+                        <div class="d-inline p-2"><button (click)="editSingleTask(task)" class="btn">Edit</button></div>
+                        <div class="d-inline p-2"><button (click)="endSingleTask(task.taskId)" class="btn">End Task</button></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

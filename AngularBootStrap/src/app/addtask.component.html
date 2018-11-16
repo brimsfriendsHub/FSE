@@ -1,0 +1,67 @@
+<div>
+    <label class="alert-danger">{{validationError}}</label>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-md-12">
+                <form [formGroup]="addtaskForm" (ngSubmit)="onSubmit()">
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label for="validationtaskName">Task</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" formControlName="taskName" id="validationtaskName" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label>priority</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 text-left">0</div>
+                                <div class="col-md-6 text-right">30</div>
+                            </div>
+                            <div><input type="range" formControlName="priority" class="custom-range" min="0" max="30" value="priorityValue" id="customRange2" required></div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label>Parent Task</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" formControlName="parentTask" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label>Start Date</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="date" class="form-control" formControlName="startDate" placeholder="yyyy-MM-dd" name="startdp" required>
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label>End Date</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" type="date" formControlName="endDate" placeholder="yyyy-MM-dd" name="enddp" required>
+                            <!--pattern="\d{1,2}-\d{1,2}-\d{4}"-->
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-11 text-right">
+                            <div class="d-inline p-2"><button (click)="onReset()" class="btn">Reset</button></div>
+                            <div class="d-inline p-2"><input type="submit" class="btn btn-primary" value="{{taskId>0?'Update': 'Add'}} Task" /></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

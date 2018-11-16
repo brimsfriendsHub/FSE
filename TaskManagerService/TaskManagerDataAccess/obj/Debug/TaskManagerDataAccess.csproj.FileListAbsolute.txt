@@ -1,0 +1,10 @@
+C:\Rajesh\Technical\TaskManagerService\TaskManagerService\TaskManagerDataAccess\bin\Debug\TaskManagerDataAccess.dll
+C:\Rajesh\Technical\TaskManagerService\TaskManagerService\TaskManagerDataAccess\bin\Debug\TaskManagerDataAccess.pdb
+C:\Rajesh\Technical\TaskManagerService\TaskManagerService\TaskManagerDataAccess\obj\Debug\TaskManagerDataAccess.csproj.CoreCompileInputs.cache
+C:\Rajesh\Technical\TaskManagerService\TaskManagerService\TaskManagerDataAccess\obj\Debug\TaskManagerDataAccess.dll
+C:\Rajesh\Technical\TaskManagerService\TaskManagerService\TaskManagerDataAccess\obj\Debug\TaskManagerDataAccess.pdb
+C:\Rajesh\Technical\TaskManagerService\TaskManagerService\TaskManagerDataAccess\obj\Debug\TaskManagerDataAccess.csprojAssemblyReference.cache
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\bin\Debug\TaskManagerDataAccess.dll
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\bin\Debug\TaskManagerDataAccess.pdb
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\obj\Debug\TaskManagerDataAccess.dll
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\obj\Debug\TaskManagerDataAccess.pdb

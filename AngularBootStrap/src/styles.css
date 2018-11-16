@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+/* unvisited link */
+
+a {
+    cursor: pointer !important;
+}
+
+a:link {
+    color: green !important;
+}
+
+
+/* visited link */
+
+a:visited {
+    color: blue !important;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: red !important;
+}
+
+
+/* selected link */
+
+a:active {
+    color: yellow !important;
+    font-weight: bold;
+}
+
+.clsFixedtbllength {
+    width: 15%;
+    word-wrap: normal;
+}
+
+.clsTaskDetail {
+    width: 18%;
+    word-wrap: normal;
+}
+
+.clsEditDetail {
+    width: 20%;
+    word-wrap: normal;
+}
+
+.active {
+    color: blue !important;
+    font-weight: bold !important;
+}
+
+.taskHighLight {
+    background-color: lightgrey;
+    border: 0px solid green;
+    padding: 1px;
+    min-height: 100px;
+}
+
+.clsDisplayblock {
+    display: none;
+}

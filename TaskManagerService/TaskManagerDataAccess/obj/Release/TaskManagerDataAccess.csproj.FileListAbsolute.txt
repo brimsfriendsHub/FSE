@@ -1,0 +1,4 @@
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\bin\Release\TaskManagerDataAccess.dll
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\bin\Release\TaskManagerDataAccess.pdb
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\obj\Release\TaskManagerDataAccess.dll
+C:\Users\Admin\Downloads\FSD-master\FSD-master\TaskManagerService\TaskManagerDataAccess\obj\Release\TaskManagerDataAccess.pdb
