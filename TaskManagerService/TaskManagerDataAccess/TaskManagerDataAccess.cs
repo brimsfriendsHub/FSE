@@ -75,7 +75,7 @@ namespace TaskManagerDataAccess
                                     StartDate = Convert.ToDateTime(dr["StartDate"]),
                                     EndDate = Convert.ToDateTime(dr["EndDate"]),
                                     Priority = Convert.ToInt32(dr["Priority"]),
-                                    //IsEnded = Convert.ToBoolean(dr["IsEnded"]),
+                                    IsEnded = Convert.ToBoolean(dr["IsEnded"]),
                                     ParentTaskName = Convert.ToString(dr["ParentTaskName"])
                                 };
                                 objTaskDetailslist.Add(objTask);

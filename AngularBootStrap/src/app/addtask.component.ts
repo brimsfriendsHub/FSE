@@ -40,7 +40,7 @@ import { SharedServiceService } from './taskservice.service';
         // stop here if form is invalid
         if (!this.addtaskForm.invalid) {
                  const val = this.addtaskForm.value;
-                  const ptsk = (val.parentTaskName == null || val.parentTaskName === undefined) ? this.pTaskName : val.parentTaskName;
+                  const ptsk = (val.parentTask == null || val.parentTask === undefined) ? this.pTaskName : val.parentTask;
                   this.addtaskModel.taskId = this.taskId;
                   this.addtaskModel.taskName = val.taskName;
                   this.addtaskModel.parentTaskName = ptsk;

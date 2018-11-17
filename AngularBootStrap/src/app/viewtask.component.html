@@ -1,5 +1,8 @@
 <div class="card">
     <div class="card-body">
+        <div>
+            <label class="alert-danger">{{validationMessage}}</label>
+        </div>
         <form [formGroup]="viewtaskForm" (ngSubmit)="onSubmit()">
             <div class="row  form-group">
                 <div class="col-md-6">
@@ -14,11 +17,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="d-inline p-2">Priority From</div>
-                            <div class="d-inline p-2"><input type="text" formControlName="priorityFrom" class="form-control" /></div>
+                            <div class="d-inline p-2"><input type="number" formControlName="priorityFrom" class="form-control" /></div>
                         </div>
                         <div class="col-md-6">
                             <div class="d-inline p-2">Priority To</div>
-                            <div class="d-inline p-2"><input type="text" formControlName="priorityTo" class="form-control" /></div>
+                            <div class="d-inline p-2"><input type="number" formControlName="priorityTo" class="form-control" /></div>
                         </div>
                     </div>
                 </div>
@@ -52,6 +55,7 @@
     </div>
     <div class="card-body">
         <div *ngFor="let task of taskDetails; trackBy:trackTask">
+
             <table class="table">
                 <tr>
                     <th scope="col">Task</th>
@@ -72,11 +76,12 @@
                     <td class="clsFixedtbllength">{{task.startDate | date:'dd/MM/yyyy'}}</td>
                     <td class="clsFixedtbllength">{{task.endDate | date:'dd/MM/yyyy'}}</td>
                     <td class="clsEditDetail">
-                        <div class="d-inline p-2"><button (click)="editSingleTask(task)" class="btn">Edit</button></div>
-                        <div class="d-inline p-2"><button (click)="endSingleTask(task.taskId)" class="btn">End Task</button></div>
+                        <div class="d-inline p-2"><button (click)="editSingleTask(task)" class="btn" [disabled]="task.isEnded">Edit</button></div>
+                        <div class="d-inline p-2"><button (click)="endSingleTask(task.taskId)" class="btn" [disabled]="task.isEnded">End Task</button></div>
                     </td>
                 </tr>
             </table>
+
         </div>
     </div>
 </div>

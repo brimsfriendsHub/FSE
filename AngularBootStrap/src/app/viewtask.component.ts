@@ -1,5 +1,5 @@
 import { Component, NgModule, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {TaskModel} from './TaskModel/addtask.model';
 import { DatePipe } from '@angular/common';
 import { SharedServiceService } from './taskservice.service';
@@ -13,6 +13,8 @@ import { SharedServiceService } from './taskservice.service';
       taskDetails = new Array<TaskModel>();
       viewtaskForm: FormGroup;
       taskSearch = new TaskModel();
+      validationMessage = '';
+
 
       @Output() editTask = new EventEmitter<TaskModel>();
 
@@ -34,17 +36,65 @@ import { SharedServiceService } from './taskservice.service';
 
     onSubmit() {
       // stop here if form is invalid
+      this.validationMessage = '';
       if (!this.viewtaskForm.invalid) {
                const val = this.viewtaskForm.value;
                this.taskSearch.taskName = val.taskName;
                this.taskSearch.priority = val.priorityFrom;
                this.taskSearch.priorityTo = val.priorityTo;
-               this.taskSearch.parentTaskName = val.parentTaskName;
+               this.taskSearch.parentTaskName = val.parenttaskName;
                this.taskSearch.startDate = val.startDate;
                this.taskSearch.endDate = val.endDate;
+               this.validateFields(val);
 
-              this.loadTaskDetails(this.taskSearch);
-      }
+               if (this.validationMessage.trim().length < 1) {
+                this.loadTaskDetails(this.taskSearch);
+               }
+          }
+
+  }
+  private validateFields(val: any) {
+    if (val.priorityFrom != null && val.priorityTo != null && val.priorityFrom !== '' && val.priorityTo !== '') {
+      this.validationMessage = val.priorityFrom > val.priorityTo ? 'PriorityTo field should be greater than priority from' : '';
+      return;
+    }
+    if (val.startDate != null && val.endDate != null && val.endDate !== '' && val.startDate !== '') {
+      this.validationMessage = val.startDate > val.endDate ? 'End date should be greater than Start Date' : '';
+      return;
+    }
+  }
+
+  private filterResult(val: any) {
+
+    if (val.taskName !== undefined && val.taskName != null && val.taskName !== '') {
+      this.taskDetails = this.taskDetails.filter(x => x.taskName.toUpperCase().indexOf(val.taskName.toUpperCase().trim()) > -1);
+    }
+
+    if (val.priority != null && val.priority !== undefined && val.priority !== '') {
+      this.taskDetails = this.taskDetails.filter(x => x.priority >= val.priority);
+    }
+
+    if (val.priorityTo != null && val.priorityTo !== undefined && val.priorityTo !== '') {
+      this.taskDetails = this.taskDetails.filter(x => x.priority <= val.priorityTo);
+    }
+
+    if (val.parentTaskName != null && val.parentTaskName !== undefined && val.parentTaskName !== '') {
+      this.taskDetails = this.taskDetails.filter(x => x.parentTaskName.toUpperCase().indexOf(val.parentTaskName.toUpperCase().trim()) > -1);
+    }
+
+    if (val.startDate != null && val.startDate !== '') {
+      // tslint:disable-next-line:prefer-const
+      let stDate = new Date(val.startDate);
+      stDate.setHours(0, 0, 0, 0);
+      this.taskDetails = this.taskDetails.filter(x => new Date(x.startDate) >= stDate);
+    }
+
+    if (val.endDate != null && val.endDate !== '') {
+      // tslint:disable-next-line:prefer-const
+      let etDate = new Date(val.endDate);
+      etDate.setHours(0, 0, 0, 0);
+      this.taskDetails = this.taskDetails.filter(x => new Date(x.endDate) <= etDate);
+    }
 
   }
       // tslint:disable-next-line:use-life-cycle-interface
@@ -73,7 +123,9 @@ import { SharedServiceService } from './taskservice.service';
         // }
         this._service.getTask(val).subscribe(data => {
           this.taskDetails = data;
+          this.filterResult(val);
         }) ;
+
 
        }
 
