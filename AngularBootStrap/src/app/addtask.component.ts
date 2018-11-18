@@ -47,7 +47,7 @@ import { SharedServiceService } from './taskservice.service';
                             this.onReset();
                         }) ;
                      } else {
-                        this._service.updateTask(this.addtaskModel).subscribe(data => {
+                        this._service.updateTask(this.assignTaskValues(val)).subscribe(data => {
                             this.onReset();
                         }) ;
                      }
