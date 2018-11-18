@@ -40,19 +40,10 @@ import { SharedServiceService } from './taskservice.service';
         // stop here if form is invalid
         if (!this.addtaskForm.invalid) {
                  const val = this.addtaskForm.value;
-                  const ptsk = (val.parentTask == null || val.parentTask === undefined) ? this.pTaskName : val.parentTask;
-                  this.addtaskModel.taskId = this.taskId;
-                  this.addtaskModel.taskName = val.taskName;
-                  this.addtaskModel.parentTaskName = ptsk;
-                  this.addtaskModel.priority = val.priority;
-                  this.addtaskModel.startDate = this._datePipe.transform(val.startDate, 'yyyy-MM-dd');
-                  this.addtaskModel.endDate = this._datePipe.transform(val.endDate, 'yyyy-MM-dd');
-
                   if (this.validationDt(val).length < 1) {
                     if (this.taskId === 0) {
-                        this._service.addTask(this.addtaskModel).subscribe(data => {
-                            // tslint:disable-next-line:no-debugger
-                            debugger;
+                        this._service.addTask(this.assignTaskValues(val)).subscribe(data => {
+                            // tslint:disable-n debugger;
                             this.onReset();
                         }) ;
                      } else {
@@ -61,17 +52,31 @@ import { SharedServiceService } from './taskservice.service';
                         }) ;
                      }
                   }
-
         }
 
     }
 
+    assignTaskValues(val: any) {
+        const ptsk = (val.parentTask == null || val.parentTask === undefined) ? this.pTaskName : val.parentTask;
+        this.addtaskModel.taskId = this.taskId;
+                  this.addtaskModel.taskName = val.taskName;
+                  this.addtaskModel.parentTaskName = ptsk;
+                  this.addtaskModel.priority = val.priority;
+                  this.addtaskModel.startDate = this._datePipe.transform(val.startDate, 'yyyy-MM-dd');
+                  this.addtaskModel.endDate = this._datePipe.transform(val.endDate, 'yyyy-MM-dd');
+
+                  return this.addtaskModel;
+    }
+
     validationDt(valIn) {
-        if (valIn.endDate < valIn.startDate) {
-            this.validationError = 'End Date should greater than start date';
-        } else if (valIn.priority < 1) {
-            this.validationError = 'Please mark priority greater than 0';
-        }
+
+        // tslint:disable-next-line:max-line-length
+        this.validationError = (valIn.endDate < valIn.startDate) ? 'End Date should greater than start date' : (valIn.priority < 1) ? 'Please mark priority greater than 0' : '';
+        // if (valIn.endDate < valIn.startDate) {
+        //     this.validationError = 'End Date should greater than start date';
+        // } else if (valIn.priority < 1) {
+        //     this.validationError = 'Please mark priority greater than 0';
+        // }
         return this.validationError;
     }
 

@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SharedServiceService {
-    public taskManagerUrl = 'http://localhost:8077/api/taskmanager/';
+    public taskManagerUrl = 'http://localhost:55600/api/taskmanager/';
 
      requestOption = {
       headers: new HttpHeaders({

@@ -15,8 +15,8 @@ export class AppComponent {
 
   addTask() {
 // tslint:disable-next-line:no-debugger
-debugger;
-this.isAddTask = true;
+
+    this.isAddTask = true;
   }
 
   viewTask() {

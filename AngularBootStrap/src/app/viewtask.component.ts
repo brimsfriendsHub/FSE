@@ -53,7 +53,7 @@ import { SharedServiceService } from './taskservice.service';
           }
 
   }
-  private validateFields(val: any) {
+  validateFields(val: any) {
     if (val.priorityFrom != null && val.priorityTo != null && val.priorityFrom !== '' && val.priorityTo !== '') {
       this.validationMessage = val.priorityFrom > val.priorityTo ? 'PriorityTo field should be greater than priority from' : '';
       return;
@@ -64,7 +64,7 @@ import { SharedServiceService } from './taskservice.service';
     }
   }
 
-  private filterResult(val: any) {
+  filterResult(val: any) {
 
     if (val.taskName !== undefined && val.taskName != null && val.taskName !== '') {
       this.taskDetails = this.taskDetails.filter(x => x.taskName.toUpperCase().indexOf(val.taskName.toUpperCase().trim()) > -1);
